@@ -61,5 +61,6 @@ test("telephone and social destinations match the owner-supplied brief", () => {
   assert.equal(profile.whatsapp.url, "https://wa.me/66866078928");
   assert.equal(profile.instagram.url, "https://www.instagram.com/bankblanc/");
   assert.equal(profile.line.id, "0866078928");
+  assert.equal(profile.line.url, "https://line.me/ti/p/w0A3X6PN1X");
   assert.equal(profile.email, "chaithawat.emer.work@gmail.com");
 });
