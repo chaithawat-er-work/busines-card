@@ -53,6 +53,8 @@ If the profile identity changes, regenerate `public/og-image.png` with matching 
 
 ## Canonical URL, QR, and sharing
 
+For international sharing, send one permanent public website link by email, message, AirDrop, or QR. Recipients can open the card on iOS or Android without signing in to this website. WhatsApp, Instagram, and email use their direct destinations; their own app/account requirements still apply. Set `profile.line.url` to the owner's actual add-friend link copied from LINE → Home → Add friends → QR code → My QR code → Copy link. The card then shows a direct **Add on LINE** action in all three languages. Until this real link is supplied, the existing copy-ID fallback remains in place; a phone number alone is not treated as a confirmed add-friend URL.
+
 Set `NEXT_PUBLIC_SITE_URL` to the **owner-approved permanent HTTPS public profile URL** in `.env.local` and the hosting build environment. Rebuild whenever it changes: Next.js embeds this public value at build time. Do not put secrets in `NEXT_PUBLIC_*` variables.
 
 The guard rejects local/IP/reserved hosts, known preview deployments, credentials, query strings, and fragments. This conservative version also rejects all `vercel.app` and `netlify.app` subdomains because the app cannot reliably distinguish permanent from preview hosts there; use a verified custom domain for those providers. A plain production `<project>.pages.dev` host is supported, while multi-label Pages preview hosts are rejected. No automatic validator can establish permanence or ownership: the owner must confirm the exact destination.

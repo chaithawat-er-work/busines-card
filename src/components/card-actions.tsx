@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Download, Share2, UserRoundPlus } from "lucide-react";
+import { ArrowUpRight, Copy, Download, Share2, UserRoundPlus } from "lucide-react";
 import { profile, fullName } from "@/config/profile";
 import { createVCard } from "@/lib/vcard";
 import { AppIcon } from "./app-icon";
@@ -21,9 +21,12 @@ export function LineContact() {
     }
   }
   return <div className="line-contact">
+    {profile.line.url ? <a className="contact-link social-link" href={profile.line.url} target="_blank" rel="noopener noreferrer">
+      <AppIcon app="line" /><span className="contact-text"><small>LINE</small><strong>{t.lineAdd}</strong></span><ArrowUpRight className="contact-arrow" size={15} />
+    </a> :
     <button type="button" className="contact-link social-link" onClick={copyLineId} aria-label={`${t.lineCopy}: ${profile.line.id}`}>
       <AppIcon app="line" /><span className="contact-text"><small>{t.lineCopy}</small><strong>{profile.line.id}</strong></span><Copy className="contact-arrow" size={15} />
-    </button>
+    </button>}
     {status && <p className="line-status" role="status">{t[status]}</p>}
     {manual && <input className="line-id-input" aria-label={t.lineId} readOnly value={profile.line.id} onFocus={e => e.target.select()} />}
   </div>;

@@ -11,7 +11,7 @@ export interface Profile {
   office: { display: string; number: string };
   whatsapp: { label: string; url: string };
   instagram: { label: string; url: string };
-  line: { id: string };
+  line: { id: string; url: string | null };
   email: string;
   portrait: { src: string | null; alt: string };
   contactFilename: string;
@@ -34,7 +34,7 @@ export const profile: Profile = {
   office: { display: "+66 2 225 0314", number: "+6622250314" },
   whatsapp: { label: "WhatsApp", url: "https://wa.me/66866078928" },
   instagram: { label: "@bankblanc", url: "https://www.instagram.com/bankblanc/" },
-  line: { id: "0866078928" },
+  line: { id: "0866078928", url: null },
   email: "chaithawat.emer.work@gmail.com",
   portrait: { src: "/portrait-v2.webp", alt: "Chaithawat Chueluecha in front of an ambulance and the Erawan EMS building" },
   contactFilename: "Chaithawat-Chueluecha.vcf",
