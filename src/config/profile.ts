@@ -6,6 +6,7 @@ export interface Profile {
   credentials: string;
   role: Record<Language, string>;
   organization: string;
+  affiliation: Record<Language, { organization: string; department: string; administration: string }>;
   department: string;
   administration: string;
   location: string;
@@ -33,6 +34,14 @@ export const profile: Profile = {
     id: "Dokter Emergensi",
   },
   organization: "ศูนย์บริการการแพทย์ฉุกเฉินกรุงเทพมหานคร (ศูนย์เอราวัณ)",
+  affiliation: {
+    en: { organization: "Bangkok Emergency Medical Service Center (Erawan Center)", department: "Medical Service Department", administration: "Bangkok Metropolitan Administration" },
+    th: { organization: "ศูนย์บริการการแพทย์ฉุกเฉินกรุงเทพมหานคร (ศูนย์เอราวัณ)", department: "สำนักการแพทย์", administration: "กรุงเทพมหานคร" },
+    zh: { organization: "曼谷紧急医疗服务中心（Erawan Center）", department: "医疗服务局", administration: "曼谷市政府" },
+    ja: { organization: "バンコク救急医療サービスセンター（エラワンセンター）", department: "医療サービス局", administration: "バンコク都庁" },
+    ko: { organization: "방콕 응급의료서비스센터 (에라완 센터)", department: "의료서비스국", administration: "방콕시청" },
+    id: { organization: "Pusat Layanan Medis Darurat Bangkok (Pusat Erawan)", department: "Departemen Layanan Medis", administration: "Pemerintah Metropolitan Bangkok" },
+  },
   department: "Medical Service Department",
   administration: "Bangkok Metropolitan Administration",
   location: "Bangkok, Thailand",

@@ -8,13 +8,13 @@ const url = canonicalUrl(process.env.NEXT_PUBLIC_SITE_URL);
 const description = `Connect with ${fullName}, ${profile.role.en}, ${profile.department}, ${profile.administration}. Save contact details and connect in ${profile.location}.`;
 
 export const metadata: Metadata = {
-  title: `${fullName} | ${profile.organization}`,
+  title: `${fullName} | ${profile.affiliation.en.organization}`,
   description,
   ...(url ? { metadataBase: new URL(url), alternates: { canonical: url } } : {}),
   robots: url ? { index: true, follow: true } : { index: false, follow: false },
   icons: { icon: assetPath("/icon.svg"), apple: assetPath("/apple-touch-icon.png") },
   openGraph: {
-    title: `${fullName} | ${profile.organization}`, description,
+    title: `${fullName} | ${profile.affiliation.en.organization}`, description,
     type: "profile", firstName: profile.givenName, lastName: profile.familyName,
     ...(url ? { url, images: [{ url: `${url}${profile.socialImage}`, width: 1200, height: 630, alt: `${fullName} digital business card` }] } : {}),
     locale: "en_US",

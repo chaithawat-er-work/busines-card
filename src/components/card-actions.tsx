@@ -54,14 +54,14 @@ export function SaveContact({ url }: { url: string | null }) {
 }
 
 export function ShareCard({ url }: { url: string | null }) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [status, setStatus] = useState<"shared" | "copied" | "manual" | null>(null);
   const [manual, setManual] = useState(false);
   async function share() {
     if (!url) return;
     setStatus(null);
     if (navigator.share) {
-      try { await navigator.share({ title: fullName, text: `${fullName} · ${profile.organization}`, url }); setStatus("shared"); return; }
+      try { await navigator.share({ title: fullName, text: `${fullName} · ${profile.affiliation[language].organization}`, url }); setStatus("shared"); return; }
       catch (error) { if (error instanceof Error && error.name === "AbortError") return; }
     }
     try {
