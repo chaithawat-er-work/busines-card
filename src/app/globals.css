@@ -36,7 +36,7 @@ svg { flex-shrink: 0; }
 h1 { font-family: Georgia, "Times New Roman", serif; font-size: 34px; line-height: 1.12; font-weight: 400; letter-spacing: -.6px; margin: 10px 0 12px; }
 .profile-role { color: var(--teal); font-size: 16px; font-weight: 600; line-height: 1.65; margin: 0 0 14px; text-wrap: balance; }
 .credential { font: 600 14px "Segoe UI", Arial, sans-serif; display: inline-block; vertical-align: middle; padding: 5px 8px; background: #eaf3f1; color: var(--teal); border-radius: 5px; margin-left: 10px; letter-spacing: 0; }
-.organization p { font-size: 17px; font-weight: 600; margin: 0 0 4px; }
+.organization p { font-size: 17px; font-weight: 600; margin: 0 0 4px; white-space: pre-line; }
 .organization > span { display: block; font-size: 14px; line-height: 1.65; color: var(--muted); }
 .location { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 14px; margin: 10px 0 0; }
 .save-button { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 60px; background: var(--navy); color: white; border: 1px solid var(--navy); border-radius: 9px; padding: 12px 20px; font-size: 18px; font-weight: 600; transition: background .18s; }

@@ -39,7 +39,7 @@ export const profile: Profile = {
   },
   organization: "ศูนย์รับแจ้งเหตุและสั่งการ ศูนย์บริการการแพทย์ฉุกเฉินกรุงเทพมหานคร (ศูนย์เอราวัณ)",
   affiliation: {
-    en: { organization: "Emergency Call and Dispatch Center, Bangkok Emergency Medical Service Center (Erawan Center)", department: "Medical Service Department", administration: "Bangkok Metropolitan Administration" },
+    en: { organization: "Emergency Call and Dispatch Center,\nBangkok Emergency Medical Service (Erawan Center)", department: "Medical Service Department", administration: "Bangkok Metropolitan Administration" },
     th: { organization: "ศูนย์รับแจ้งเหตุและสั่งการ ศูนย์บริการการแพทย์ฉุกเฉินกรุงเทพมหานคร (ศูนย์เอราวัณ)", department: "สำนักการแพทย์", administration: "กรุงเทพมหานคร" },
     zh: { organization: "急救接报与调度中心，曼谷紧急医疗服务中心（Erawan Center）", department: "医疗服务局", administration: "曼谷市政府" },
     "zh-Hant": { organization: "緊急通報與派遣中心，曼谷緊急醫療服務中心（Erawan Center）", department: "醫療服務局", administration: "曼谷市政府" },
