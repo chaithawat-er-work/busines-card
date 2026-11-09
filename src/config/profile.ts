@@ -38,7 +38,7 @@ export const profile: Profile = {
   location: "Bangkok, Thailand",
   mobile: { display: "+66 86 607 8928", number: "+66866078928" },
   office: { display: "+66 2 225 0314", number: "+6622250314" },
-  whatsapp: { label: "WhatsApp", url: "https://wa.me/66866078928" },
+  whatsapp: { label: "WhatsApp", url: "https://wa.me/qr/6HUGJ23RNQZQN1" },
   instagram: { label: "@bankblanc", url: "https://www.instagram.com/bankblanc/" },
   line: { id: "0866078928", url: "https://line.me/ti/p/w0A3X6PN1X" },
   email: "chaithawat.emer.work@gmail.com",

@@ -69,7 +69,7 @@ test("2048px downloadable QR decodes to precisely the configured canonical URL",
 test("telephone and social destinations match the owner-supplied brief", () => {
   assert.equal(profile.mobile.number, "+66866078928");
   assert.equal(profile.office.number, "+6622250314");
-  assert.equal(profile.whatsapp.url, "https://wa.me/66866078928");
+  assert.equal(profile.whatsapp.url, "https://wa.me/qr/6HUGJ23RNQZQN1");
   assert.equal(profile.instagram.url, "https://www.instagram.com/bankblanc/");
   assert.equal(profile.line.id, "0866078928");
   assert.equal(profile.line.url, "https://line.me/ti/p/w0A3X6PN1X");

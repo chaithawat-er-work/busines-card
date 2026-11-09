@@ -63,6 +63,8 @@ Once configured, the build generates a QR with a four-module quiet zone and a 20
 
 Share uses the native Web Share API when supported. Cancellation is respected. Unsupported or failed native sharing falls back to clipboard; if clipboard access fails, the page offers a selectable link. Phone, WhatsApp, and Instagram links are always available.
 
+The WhatsApp action uses the owner's confirmed contact link `https://wa.me/qr/6HUGJ23RNQZQN1`, with “Add me as a contact on WhatsApp.” in English and equivalent labels in the other five languages. The mobile telephone number and the business-card website URL remain separate configuration values.
+
 ## Proposed deployment: Cloudflare Pages static hosting
 
 ### Active hosting: GitHub Pages
