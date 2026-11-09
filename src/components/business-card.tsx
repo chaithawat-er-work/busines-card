@@ -1,18 +1,18 @@
 "use client";
 
-import { ArrowUpRight, Building2, MapPin, Phone, QrCode } from "lucide-react";
-import { DownloadQr, LineContact, SaveContact, ShareCard } from "@/components/card-actions";
+import { ArrowUpRight, Building2, MapPin, Phone } from "lucide-react";
+import { LineContact, SaveContact, ShareCard } from "@/components/card-actions";
 import { AppIcon } from "@/components/app-icon";
 import { profile } from "@/config/profile";
 import { LanguageProvider, LanguageSelector, useLanguage } from "./language-provider";
 import { assetPath } from "@/lib/site-path";
 
 
-export function BusinessCard(props: { url: string | null; qr: string | null }) {
+export function BusinessCard(props: { url: string | null }) {
   return <LanguageProvider><CardContent {...props} /></LanguageProvider>;
 }
 
-function CardContent({ url, qr }: { url: string | null; qr: string | null }) {
+function CardContent({ url }: { url: string | null }) {
   const { t, language } = useLanguage();
   return <>
     <a className="skip-link" href="#profile">{t.skip}</a>
@@ -50,7 +50,6 @@ function CardContent({ url, qr }: { url: string | null; qr: string | null }) {
       </article>
       <section className="sharing-section" aria-labelledby="sharing-title">
         <div className="sharing-copy"><span className="eyebrow">{t.card}</span><h2 id="sharing-title">{t.stay}</h2><p>{url ? t.shareDescription : t.pendingDescription}</p><ShareCard url={url} /></div>
-        {qr ? <div className="qr-group"><div className="qr-frame"><img src={qr} alt={t.qrAlt} width={152} height={152} /></div><div className="qr-details"><span className="qr-label">{t.scan}</span><p>{t.allDetails}</p><DownloadQr image={qr} /><a className="canonical-link" href={url!}>{url}</a></div></div> : <div className="qr-pending"><div className="qr-pending-icon"><QrCode size={34} strokeWidth={1.5} /></div><div><span className="qr-label">QR CODE</span><p>{t.afterLaunch}</p><small>{t.pendingUrl}</small></div></div>}
       </section>
     </main>
     <footer className="site-footer"><span>{profile.givenName} {profile.familyName}, {profile.credentials}</span><span>{t.location}<span className="footer-dot">·</span>{t.card}</span></footer>

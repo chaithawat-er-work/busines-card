@@ -79,7 +79,3 @@ export function ShareCard({ url }: { url: string | null }) {
   </div>;
 }
 
-export function DownloadQr({ image }: { image: string }) {
-  const { t } = useLanguage();
-  return <a className="download-qr" href={image} download="Chaithawat-Business-Card-QR.png"><Download size={18} />{t.downloadQr}<span>PNG · 2048 px</span></a>;
-}
