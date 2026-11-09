@@ -16,7 +16,7 @@ function CardContent({ url }: { url: string | null }) {
   const { t, language } = useLanguage();
   return <>
     <a className="skip-link" href="#profile">{t.skip}</a>
-    <header className="site-header"><a className="wordmark" href="#profile" aria-label="Chaithawat Chueluecha profile">CC<span className="wordmark-dot" /></a><span className="header-label">{t.card}</span><LanguageSelector /></header>
+    <header className="site-header"><a className="wordmark" href="#profile" aria-label="Chaithawat Chueluecha profile">CC<span className="wordmark-dot" /></a><span className="header-label">{t.card}</span><img className="ems-logo" src={assetPath("/bangkok-ems.webp")} alt="Bangkok EMS mascot" width={192} height={192} /><LanguageSelector /></header>
     <main id="profile" className="card-shell">
       <article className="profile-card" aria-labelledby="profile-name">
         <div className="profile-content">
