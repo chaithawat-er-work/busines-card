@@ -37,8 +37,8 @@ test("vCard contains the supplied identity and correctly typed telephone fields"
   assert.ok(card.endsWith("END:VCARD\r\n"));
   assert.ok(unfolded.includes("N:Chueluecha;Chaithawat;;;MD\r\n"));
   assert.ok(unfolded.includes("FN:Chaithawat Chueluecha\\, MD\r\n"));
-  assert.ok(unfolded.includes("ORG:Erawan Center;Medical Service Department;Bangkok Metropolitan Administration\r\n"));
-  assert.ok(unfolded.includes("TITLE:Emergency Physician Of Erawan Center\r\n"));
+  assert.ok(unfolded.includes("ORG:ศูนย์บริการการแพทย์ฉุกเฉินกรุงเทพมหานคร (ศูนย์เอราวัณ);Medical Service Department;Bangkok Metropolitan Administration\r\n"));
+  assert.ok(unfolded.includes("TITLE:Emergency Physician\r\n"));
   assert.ok(unfolded.includes("TEL;TYPE=CELL,VOICE:+66866078928\r\n"));
   assert.ok(unfolded.includes("TEL;TYPE=WORK,VOICE:+6622250314\r\n"));
   assert.ok(unfolded.includes("EMAIL;TYPE=INTERNET,WORK:chaithawat.emer.work@gmail.com\r\n"));

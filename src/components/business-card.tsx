@@ -28,7 +28,7 @@ function CardContent({ url, qr }: { url: string | null; qr: string | null }) {
           <div className="profile-kicker"><span /> {t.profile}</div>
           <h1 id="profile-name" lang="en">{profile.givenName}<br />{profile.familyName}<span className="credential">{profile.credentials}</span></h1>
           <p className="profile-role">{profile.role[language]}</p>
-          <div className="organization" lang="en"><p>{profile.organization}</p><span>{profile.department}<br />{profile.administration}</span></div>
+          <div className="organization"><p lang="th">{profile.organization}</p><span lang="en">{profile.department}<br />{profile.administration}</span></div>
           <p className="location"><MapPin size={15} />{t.location}</p>
           </div>
           </div>
