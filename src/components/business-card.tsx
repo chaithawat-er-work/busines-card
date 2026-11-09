@@ -5,6 +5,7 @@ import { DownloadQr, LineContact, SaveContact, ShareCard } from "@/components/ca
 import { AppIcon } from "@/components/app-icon";
 import { profile } from "@/config/profile";
 import { LanguageProvider, LanguageSelector, useLanguage } from "./language-provider";
+import { assetPath } from "@/lib/site-path";
 
 
 export function BusinessCard(props: { url: string | null; qr: string | null }) {
@@ -21,7 +22,7 @@ function CardContent({ url, qr }: { url: string | null; qr: string | null }) {
         <div className="profile-content">
           <div className="profile-heading">
           <div className="portrait-panel">
-            {profile.portrait.src ? <img className="portrait" src={profile.portrait.src} alt={profile.portrait.alt} lang="en" width={1200} height={675} fetchPriority="high" /> : <div className="portrait-placeholder" role="img" aria-label={t.placeholder}><span>CC</span><small>{t.placeholder}</small></div>}
+            {profile.portrait.src ? <img className="portrait" src={assetPath(profile.portrait.src)} alt={profile.portrait.alt} lang="en" width={1200} height={675} fetchPriority="high" /> : <div className="portrait-placeholder" role="img" aria-label={t.placeholder}><span>CC</span><small>{t.placeholder}</small></div>}
           </div>
           <div className="identity">
           <div className="profile-kicker"><span /> {t.profile}</div>

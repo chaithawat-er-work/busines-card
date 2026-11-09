@@ -65,6 +65,16 @@ Share uses the native Web Share API when supported. Cancellation is respected. U
 
 ## Proposed deployment: Cloudflare Pages static hosting
 
+### Prepared alternative: GitHub Pages (not published)
+
+The proposed production address is `https://chaithawat-er-work.github.io/busines-card/`. The owner has not yet approved public deployment at this exact address. The manual-only `.github/workflows/deploy-pages.yml` is prepared for review; it does not run on source pushes. Before running it, obtain owner approval, enable Pages with **GitHub Actions** as the source, and set the repository variable `NEXT_PUBLIC_SITE_URL` to the approved address. The workflow sets `NEXT_PUBLIC_BASE_PATH=/busines-card`, runs checks, builds `out/`, uploads the Pages artifact, and deploys it. Changing the destination requires reviewing the workflow and canonical URL together.
+
+For a local subpath build, set `NEXT_PUBLIC_BASE_PATH=/busines-card` and leave `NEXT_PUBLIC_SITE_URL` empty until approval. This tests asset paths without generating a distributable QR. Portrait and icon paths are prefixed automatically. Keep both variables empty for the ordinary root-hosted local preview. `basePath` is embedded at build time and requires a rebuild when changed.
+
+Only after public deployment succeeds should the downloadable 2048px PNG QR be placed in Canva. Preserve the entire white border around the QR, keep the black Canva frame and “SCAN ME” label outside that border, and scan-test the final exported Canva design on another phone before printing or sharing it.
+
+References: [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [Next.js basePath](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath).
+
 The recommended candidate is Cloudflare Pages using Next.js static export. Owner approval of both **Cloudflare Pages and the exact available production subdomain is required before account connection or publishing**. Source is connected to and uploaded to [chaithawat-er-work/busines-card](https://github.com/chaithawat-er-work/busines-card) on `main`. A hosting provider and public website URL still require owner approval; uploading source code does not deploy the website.
 
 Cloudflare's [Next.js static export guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) documents the static route. [Next.js static exports](https://nextjs.org/docs/app/guides/static-exports) produce `out/`; server actions, request-time APIs, cookies, ISR, and default image optimization are unavailable. This project uses none of those features; portrait optimization happens before deployment.

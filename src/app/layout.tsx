@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { profile, fullName } from "@/config/profile";
 import { canonicalUrl } from "@/lib/canonical";
+import { assetPath } from "@/lib/site-path";
 import "./globals.css";
 
 const url = canonicalUrl(process.env.NEXT_PUBLIC_SITE_URL);
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description,
   ...(url ? { metadataBase: new URL(url), alternates: { canonical: url } } : {}),
   robots: url ? { index: true, follow: true } : { index: false, follow: false },
-  icons: { icon: "/icon.svg", apple: "/apple-touch-icon.png" },
+  icons: { icon: assetPath("/icon.svg"), apple: assetPath("/apple-touch-icon.png") },
   openGraph: {
     title: `${fullName} | ${profile.organization}`, description,
     type: "profile", firstName: profile.givenName, lastName: profile.familyName,

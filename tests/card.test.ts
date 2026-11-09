@@ -6,6 +6,17 @@ import { canonicalUrl } from "../src/lib/canonical";
 import { createVCard } from "../src/lib/vcard";
 import { createQrPng } from "../src/lib/qr";
 import { profile } from "../src/config/profile";
+import { assetPath, basePath } from "../src/lib/site-path";
+
+test("static asset paths work at the domain root and GitHub Pages project path", () => {
+  assert.equal(basePath(), "");
+  assert.equal(basePath("/"), "");
+  assert.equal(assetPath("/portrait-v2.webp", ""), "/portrait-v2.webp");
+  assert.equal(assetPath("/portrait-v2.webp", "/busines-card"), "/busines-card/portrait-v2.webp");
+  assert.equal(assetPath("/icon.svg", "/busines-card"), "/busines-card/icon.svg");
+  for (const invalid of ["busines-card", "/busines-card/", "//other-host", "/../private", "/card?preview=1"]) assert.throws(() => basePath(invalid));
+  assert.throws(() => assetPath("//other-host/image.webp", "/busines-card"));
+});
 
 // Reserved by this test as a fixture; this is not an approved launch URL.
 const fixtureUrl = "https://chaithawat-card.pages.dev/";

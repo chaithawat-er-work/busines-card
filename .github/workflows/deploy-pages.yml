@@ -1,0 +1,55 @@
+name: Publish business card to GitHub Pages
+
+# Manual only. Source uploads do not publish the website.
+# Run only after owner approval of GitHub Pages and the exact production URL.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    env:
+      NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+      NEXT_PUBLIC_BASE_PATH: /busines-card
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Require the approved production destination
+        run: |
+          node -e "if (process.env.NEXT_PUBLIC_SITE_URL !== 'https://chaithawat-er-work.github.io/busines-card/') throw new Error('Set NEXT_PUBLIC_SITE_URL to the owner-approved GitHub Pages URL before publishing.')"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm typecheck
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: out
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy approved version
+        id: deployment
+        uses: actions/deploy-pages@v4
