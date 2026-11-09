@@ -21,7 +21,7 @@ AGENTS.md                 Project conventions
 
 ## Local development
 
-The card supports English, Thai, and Simplified Chinese through the always-visible **English / ไทย / 中文** selector. English is the initial default. The selected language is remembered in this browser's local storage when available; no language preference is sent to a server. UI labels, instructions, feedback, QR descriptions, and location text switch together. The document language updates for screen readers. The owner's name, credentials, official English organization wording, contact destinations, and saved vCard stay consistent in every language. Edit translations in `src/config/translations.ts`.
+The card supports English, Thai, Simplified Chinese, Japanese, Korean, and Indonesian through the always-visible **English / ไทย / 中文 / 日本語 / 한국어 / Bahasa Indonesia** selector. The mobile selector uses two rows of three large buttons to avoid horizontal scrolling. English is the initial default. The selected language is remembered in this browser's local storage when available; no language preference is sent to a server. UI labels, instructions, feedback, QR descriptions, and location text switch together. The document language updates for screen readers. The owner's name, credentials, official English organization wording, contact destinations, and saved vCard stay consistent in every language. Edit translations in `src/config/translations.ts`.
 
 Use Node.js 22 or later and pnpm 11.25.0. On this computer the executable is `pnpm.cmd`; use that spelling if PowerShell does not resolve `pnpm`. npm is not on the current PATH.
 
@@ -43,7 +43,7 @@ Production build uses webpack for predictable Windows compatibility. `out/` is a
 
 ## Update details and portrait
 
-Edit `src/config/profile.ts`. It supplies the page, vCard, and metadata. The owner-confirmed role, Emergency Physician Of Erawan Center, has English, Thai, and Simplified Chinese display text in this file and is included in the vCard TITLE field. Telephone numbers use E.164 notation for `tel:` links. The Save Contact button downloads a vCard 3.0 with structured name, credentials, organization and department, mobile, office, and the website URL when configured. The download is followed by the phone's contact import flow.
+Edit `src/config/profile.ts`. It supplies the page, vCard, and metadata. The owner-confirmed role, Emergency Physician Of Erawan Center, has display text in all six supported languages in this file and is included in the vCard TITLE field. Telephone numbers use E.164 notation for `tel:` links. The Save Contact button downloads a vCard 3.0 with structured name, credentials, organization and department, mobile, office, and the website URL when configured. The download is followed by the phone's contact import flow.
 
 The latest owner-supplied image is stored as `public/portrait-v2.webp` at a maximum width of 1200px with metadata removed by the encoder. It displays in a compact square frame, up to 240px wide on desktop and 210px on mobile. CSS `object-fit: cover` with `object-position: 65% 50%` trims part of the ambulance on the left while keeping the doctor prominent. The original image asset is unchanged; only the visible framing changes. To replace it, optimize the replacement to WebP/JPEG, place it in `public/`, and update `portrait.src` and `portrait.alt`. Set `portrait.src` to `null` to use the neutral initials placeholder. No AI alteration is applied to the supplied image.
 
@@ -53,7 +53,7 @@ If the profile identity changes, regenerate `public/og-image.png` with matching 
 
 ## Canonical URL, QR, and sharing
 
-For international sharing, send one permanent public website link by email, message, AirDrop, or QR. Recipients can open the card on iOS or Android without signing in to this website. WhatsApp, Instagram, and email use their direct destinations; their own app/account requirements still apply. Set `profile.line.url` to the owner's actual add-friend link copied from LINE → Home → Add friends → QR code → My QR code → Copy link. The card then shows a direct **Add on LINE** action in all three languages. Until this real link is supplied, the existing copy-ID fallback remains in place; a phone number alone is not treated as a confirmed add-friend URL.
+For international sharing, send one permanent public website link by email, message, AirDrop, or QR. Recipients can open the card on iOS or Android without signing in to this website. WhatsApp, Instagram, and email use their direct destinations; their own app/account requirements still apply. Set `profile.line.url` to the owner's actual add-friend link copied from LINE → Home → Add friends → QR code → My QR code → Copy link. The card then shows a direct **Add on LINE** action in all six languages. Until this real link is supplied, the existing copy-ID fallback remains in place; a phone number alone is not treated as a confirmed add-friend URL.
 
 Set `NEXT_PUBLIC_SITE_URL` to the **owner-approved permanent HTTPS public profile URL** in `.env.local` and the hosting build environment. Rebuild whenever it changes: Next.js embeds this public value at build time. Do not put secrets in `NEXT_PUBLIC_*` variables.
 
@@ -65,7 +65,7 @@ Share uses the native Web Share API when supported. Cancellation is respected. U
 
 ## Proposed deployment: Cloudflare Pages static hosting
 
-The recommended candidate is Cloudflare Pages using Next.js static export. Owner approval of both **Cloudflare Pages and the exact available production subdomain is required before account connection or publishing**. No GitHub repository or remote has been created by this implementation.
+The recommended candidate is Cloudflare Pages using Next.js static export. Owner approval of both **Cloudflare Pages and the exact available production subdomain is required before account connection or publishing**. Source is connected to and uploaded to [chaithawat-er-work/busines-card](https://github.com/chaithawat-er-work/busines-card) on `main`. A hosting provider and public website URL still require owner approval; uploading source code does not deploy the website.
 
 Cloudflare's [Next.js static export guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) documents the static route. [Next.js static exports](https://nextjs.org/docs/app/guides/static-exports) produce `out/`; server actions, request-time APIs, cookies, ISR, and default image optimization are unavailable. This project uses none of those features; portrait optimization happens before deployment.
 
@@ -73,7 +73,7 @@ After approval:
 
 1. Confirm the exact available production name in the provider dashboard. An illustrative subdomain is not a reserved or verified URL.
 2. Set `NEXT_PUBLIC_SITE_URL` to that exact public HTTPS URL. Rebuild and run the checks.
-3. For Git integration, create the owner's approved GitHub repository and connect it to Cloudflare Pages. Use the actual production branch, Node 24, `pnpm build`, and output directory `out`. Enable the repository's pinned pnpm version in the build environment.
+3. For Git integration, connect the existing approved GitHub repository to Cloudflare Pages. Use the actual production branch, Node 24, `pnpm build`, and output directory `out`. Enable the repository's pinned pnpm version in the build environment.
 4. Alternatively, upload the contents of `out/` through Pages Direct Upload. Choose Git integration versus Direct Upload deliberately because switching project modes can require a new project.
 5. Verify deployment succeeds, then visit the public site and scan/download the final QR. Only then distribute it.
 6. To update, edit the configuration/assets, run checks, rebuild with the same canonical URL, and redeploy. A URL change requires regenerating and replacing any distributed QR assets.
@@ -84,7 +84,7 @@ Consult the current [Pages limits](https://developers.cloudflare.com/pages/platf
 
 Local validation on 7 November 2026: production static export passed, TypeScript passed, and all five automated tests passed. An HTTP smoke check returned 200 for the profile page, portrait, favicon, touch icon, social preview, and stylesheet; all four contact destinations matched the brief. The unconfigured build correctly omitted a QR and emitted `noindex`. The QR test decoded a 2048px PNG to the exact test fixture URL.
 
-Browser automation could not complete: the browser connector timed out twice, and Windows Computer Use stopped because it could not determine the current browser URL confidently. The responsive breakpoints are implemented, but rendered mobile widths, console errors, keyboard interaction, native share/clipboard flows, and actual phone contact import remain unverified. Open the local preview for visual review before launch.
+During initial validation, browser automation could not complete: the browser connector timed out twice, and Windows Computer Use stopped because it could not determine the current browser URL confidently. The responsive breakpoints are implemented, but rendered mobile widths, console errors, keyboard interaction, native share/clipboard flows, and actual phone contact import remain unverified. On 9 November 2026, browser verification succeeded for all six language switches, persistence after reload for Japanese/Korean/Indonesian, and mobile layouts at widths of 320px and 375px without horizontal overflow. No browser console warnings or errors were captured. Real-device contact import and native sharing still need launch verification.
 
 - Owner confirms displayed name, credentials, organization wording, portrait, and both telephone numbers.
 - Test dialing, correct WhatsApp conversation, and the Instagram account on real phones.

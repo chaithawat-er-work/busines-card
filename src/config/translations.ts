@@ -1,9 +1,16 @@
-export type Language = "en" | "th" | "zh";
+export type Language = "en" | "th" | "zh" | "ja" | "ko" | "id";
 export const languageOptions: { value: Language; label: string; htmlLang: string }[] = [
   { value: "en", label: "English", htmlLang: "en" },
   { value: "th", label: "ไทย", htmlLang: "th" },
   { value: "zh", label: "中文", htmlLang: "zh-CN" },
+  { value: "ja", label: "日本語", htmlLang: "ja" },
+  { value: "ko", label: "한국어", htmlLang: "ko" },
+  { value: "id", label: "Bahasa Indonesia", htmlLang: "id" },
 ];
+
+export function isLanguage(value: string | null): value is Language {
+  return languageOptions.some(option => option.value === value);
+}
 
 const english = {
   skip: "Skip to business card", card: "Digital business card", profile: "PROFESSIONAL PROFILE",
@@ -43,6 +50,57 @@ export const translations: Record<Language, Translations> = {
     cardLink: "ลิงก์นามบัตร", qrAlt: "QR code สำหรับเปิดนามบัตรนี้", scan: "สแกนเพื่อเปิดนามบัตร",
     allDetails: "ทุกช่องทางติดต่อในหน้าเดียว", downloadQr: "ดาวน์โหลด QR", afterLaunch: "พร้อมหลังเปิดเว็บไซต์",
     pendingUrl: "รอยืนยันลิงก์เว็บไซต์ถาวร",
+  },
+  ja: {
+    skip: "名刺へ移動", card: "デジタル名刺", profile: "プロフィール",
+    placeholder: "プロフィール写真を準備中", location: "タイ・バンコク",
+    save: "連絡先を保存", saveHint: "電話番号とメールアドレスを連絡先に保存できます。",
+    saved: "ダウンロードしました。ファイルを開いて連絡先に追加してください。",
+    contact: "連絡方法", choose: "連絡方法を選んでください", mobile: "携帯電話に発信", office: "勤務先に発信",
+    lineAdd: "LINEで友だち追加", lineCopy: "LINE · IDをコピー", lineCopied: "LINE IDをコピーしました。LINEを開き、このIDを検索して友だちに追加してください。",
+    lineManual: "このIDを選択してコピーし、LINEで検索してください。", lineId: "コピーするLINE ID",
+    message: "メッセージを送る", email: "メールを送る · Gmail", stay: "いつでもご連絡ください",
+    shareDescription: "QRコードを読み取って名刺を開くか、リンクを共有してください。",
+    pendingDescription: "連絡先は今すぐ保存できます。QRコードでの共有はウェブサイト公開後に利用できます。",
+    share: "名刺を共有", sharePending: "ウェブサイト公開後に利用できます",
+    shared: "共有メニューを開きました。", copied: "リンクをコピーしました。", manual: "下のリンクを選択してコピーしてください。",
+    cardLink: "名刺のリンク", qrAlt: "このデジタル名刺を開くQRコード", scan: "QRコードで名刺を開く",
+    allDetails: "すべての連絡先をひとつに", downloadQr: "QRコードを保存", afterLaunch: "公開後に利用できます",
+    pendingUrl: "ウェブサイトの正式URLを確認中",
+  },
+  ko: {
+    skip: "명함으로 바로 가기", card: "디지털 명함", profile: "프로필",
+    placeholder: "프로필 사진 준비 중", location: "태국 방콕",
+    save: "연락처 저장", saveHint: "전화번호와 이메일 주소를 연락처에 저장하세요.",
+    saved: "다운로드되었습니다. 파일을 열어 연락처에 추가하세요.",
+    contact: "연락 방법", choose: "원하는 연락 방법을 누르세요", mobile: "휴대전화로 전화", office: "사무실로 전화",
+    lineAdd: "LINE 친구 추가", lineCopy: "LINE · ID 복사", lineCopied: "LINE ID를 복사했습니다. LINE을 열고 이 ID를 검색하여 친구로 추가하세요.",
+    lineManual: "이 ID를 선택하여 복사한 후 LINE에서 검색하세요.", lineId: "복사할 LINE ID",
+    message: "메시지 보내기", email: "이메일 보내기 · Gmail", stay: "언제든 연락 주세요",
+    shareDescription: "QR 코드를 스캔하여 명함을 열거나 링크를 공유하세요.",
+    pendingDescription: "지금 연락처를 저장할 수 있습니다. QR 코드 공유는 웹사이트 공개 후 이용할 수 있습니다.",
+    share: "명함 공유", sharePending: "웹사이트 공개 후 이용할 수 있습니다",
+    shared: "공유 메뉴를 열었습니다.", copied: "링크를 복사했습니다.", manual: "아래 링크를 선택하여 복사하세요.",
+    cardLink: "명함 링크", qrAlt: "이 디지털 명함을 여는 QR 코드", scan: "스캔하여 명함 열기",
+    allDetails: "모든 연락처를 한곳에서", downloadQr: "QR 코드 다운로드", afterLaunch: "웹사이트 공개 후 이용 가능",
+    pendingUrl: "웹사이트의 정식 URL 확인 중",
+  },
+  id: {
+    skip: "Langsung ke kartu nama", card: "Kartu nama digital", profile: "PROFIL PROFESIONAL",
+    placeholder: "Foto profil akan segera tersedia", location: "Bangkok, Thailand",
+    save: "Simpan kontak", saveHint: "Simpan nomor telepon dan alamat email saya ke kontak Anda.",
+    saved: "Berhasil diunduh. Buka file untuk menambahkan saya ke kontak Anda.",
+    contact: "Hubungi saya", choose: "Ketuk pilihan kontak", mobile: "Telepon seluler", office: "Telepon kantor",
+    lineAdd: "Tambah teman di LINE", lineCopy: "LINE · Salin ID", lineCopied: "ID LINE disalin. Buka LINE dan cari ID ini untuk menambahkan saya sebagai teman.",
+    lineManual: "Pilih dan salin ID ini, lalu cari di LINE.", lineId: "ID LINE untuk disalin",
+    message: "Kirim pesan", email: "Kirim email · Gmail", stay: "Mari tetap terhubung",
+    shareDescription: "Pindai kode QR untuk membuka kartu nama ini, atau bagikan tautannya.",
+    pendingDescription: "Anda dapat menyimpan kontak saya sekarang. Berbagi melalui kode QR tersedia setelah situs diluncurkan.",
+    share: "Bagikan kartu nama", sharePending: "Tersedia setelah situs diluncurkan",
+    shared: "Menu berbagi dibuka.", copied: "Tautan disalin.", manual: "Pilih dan salin tautan di bawah ini.",
+    cardLink: "Tautan kartu nama", qrAlt: "Kode QR untuk membuka kartu nama ini", scan: "Pindai untuk membuka kartu nama",
+    allDetails: "Semua informasi kontak di satu tempat", downloadQr: "Unduh kode QR", afterLaunch: "Tersedia setelah peluncuran",
+    pendingUrl: "Menunggu konfirmasi tautan situs permanen",
   },
   zh: {
     skip: "跳转至电子名片", card: "电子名片", profile: "个人资料",

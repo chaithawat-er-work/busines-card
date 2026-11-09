@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { languageOptions, translations, type Language } from "@/config/translations";
+import { isLanguage, languageOptions, translations, type Language } from "@/config/translations";
 
 const LanguageContext = createContext({ language: "en" as Language, setLanguage: (_value: Language) => {}, t: translations.en });
 
@@ -10,7 +10,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem("business-card-language");
-      if (saved === "en" || saved === "th" || saved === "zh") setLanguage(saved);
+      if (isLanguage(saved)) setLanguage(saved);
     } catch { /* Language switching still works when storage is unavailable. */ }
   }, []);
   useEffect(() => {
@@ -27,7 +27,7 @@ export function useLanguage() { return useContext(LanguageContext); }
 
 export function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
-  return <nav className="language-selector" aria-label="Language / ภาษา / 语言">
+  return <nav className="language-selector" aria-label="Language / ภาษา / 语言 / 言語 / 언어 / Bahasa">
     {languageOptions.map(option => <button key={option.value} type="button" lang={option.htmlLang} aria-pressed={language === option.value} onClick={() => setLanguage(option.value)}>{option.label}</button>)}
   </nav>;
 }

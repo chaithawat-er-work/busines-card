@@ -1,8 +1,10 @@
+import type { Language } from "./translations";
+
 export interface Profile {
   givenName: string;
   familyName: string;
   credentials: string;
-  role: { en: string; th: string; zh: string };
+  role: Record<Language, string>;
   organization: string;
   department: string;
   administration: string;
@@ -25,6 +27,9 @@ export const profile: Profile = {
     en: "Emergency Physician Of Erawan Center",
     th: "แพทย์เวชศาสตร์ฉุกเฉิน ศูนย์เอราวัณ",
     zh: "Erawan Center 急诊医师",
+    ja: "Erawan Center 救急医",
+    ko: "Erawan Center 응급의학과 의사",
+    id: "Dokter Emergensi di Erawan Center",
   },
   organization: "Erawan Center",
   department: "Medical Service Department",
