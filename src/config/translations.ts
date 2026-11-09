@@ -1,11 +1,13 @@
-export type Language = "en" | "th" | "zh" | "ja" | "ko" | "id" | "tl" | "de";
+export type Language = "en" | "th" | "zh" | "zh-Hant" | "ja" | "ko" | "id" | "ms" | "tl" | "de";
 export const languageOptions: { value: Language; label: string; htmlLang: string }[] = [
   { value: "en", label: "English", htmlLang: "en" },
   { value: "th", label: "ไทย", htmlLang: "th" },
-  { value: "zh", label: "中文", htmlLang: "zh-CN" },
+  { value: "zh", label: "简体中文", htmlLang: "zh-Hans" },
+  { value: "zh-Hant", label: "繁體中文", htmlLang: "zh-Hant" },
   { value: "ja", label: "日本語", htmlLang: "ja" },
   { value: "ko", label: "한국어", htmlLang: "ko" },
   { value: "id", label: "Bahasa Indonesia", htmlLang: "id" },
+  { value: "ms", label: "Bahasa Melayu", htmlLang: "ms" },
   { value: "tl", label: "Tagalog", htmlLang: "tl" },
   { value: "de", label: "Deutsch", htmlLang: "de" },
 ];
@@ -36,6 +38,40 @@ export type Translations = Record<TranslationKey, string>;
 
 export const translations: Record<Language, Translations> = {
   en: english,
+  "zh-Hant": {
+    skip: "跳至電子名片", card: "電子名片", profile: "個人資料",
+    placeholder: "個人照片即將上傳", location: "泰國曼谷",
+    save: "儲存聯絡人", saveHint: "將我的電話號碼和電子郵件地址儲存至聯絡人。",
+    saved: "已下載。請開啟檔案，將我加入聯絡人。",
+    contact: "歡迎隨時與我聯絡", choose: "點選聯絡方式", mobile: "撥打手機", office: "撥打辦公室電話",
+    lineAdd: "加入 LINE 好友", lineCopy: "LINE · 複製 ID", lineCopied: "已複製 LINE ID。請開啟 LINE，搜尋此 ID 加入好友。",
+    lineManual: "請選取並複製此 ID，然後在 LINE 中搜尋。", lineId: "要複製的 LINE ID",
+    message: "將我加入 WhatsApp 聯絡人", email: "傳送電子郵件 · Gmail", stay: "保持聯絡",
+    shareDescription: "將這張名片分享給想與我聯絡的人。",
+    pendingDescription: "現在即可儲存聯絡人。網站上線後即可分享名片。",
+    share: "分享名片", sharePending: "網站上線後即可使用",
+    shared: "已開啟分享選單。", copied: "已複製連結。", manual: "請選取並複製下方連結。",
+    cardLink: "名片連結", qrAlt: "開啟此電子名片的 QR 碼", scan: "掃描以開啟名片",
+    allDetails: "所有聯絡方式，一頁呈現", downloadQr: "下載 QR 碼", afterLaunch: "網站上線後可使用",
+    pendingUrl: "等待確認網站永久連結",
+  },
+  ms: {
+    skip: "Terus ke kad nama", card: "Kad nama digital", profile: "PROFIL PROFESIONAL",
+    placeholder: "Gambar profil akan disediakan", location: "Bangkok, Thailand",
+    save: "Simpan kenalan", saveHint: "Simpan nombor telefon dan alamat e-mel saya dalam senarai kenalan anda.",
+    saved: "Telah dimuat turun. Buka fail untuk menambah saya ke senarai kenalan anda.",
+    contact: "Jangan segan untuk menghubungi saya", choose: "Ketuk pilihan untuk menghubungi", mobile: "Hubungi telefon bimbit", office: "Hubungi pejabat",
+    lineAdd: "Tambah di LINE", lineCopy: "LINE · Salin ID", lineCopied: "ID LINE telah disalin. Buka LINE dan cari ID ini untuk menambah saya.",
+    lineManual: "Pilih dan salin ID ini, kemudian cari dalam LINE.", lineId: "ID LINE untuk disalin",
+    message: "Tambah saya sebagai kenalan di WhatsApp.", email: "Hantar e-mel · Gmail", stay: "Mari terus berhubung",
+    shareDescription: "Kongsi kad ini dengan sesiapa yang ingin menghubungi saya.",
+    pendingDescription: "Anda boleh menyimpan kenalan saya sekarang. Perkongsian tersedia selepas laman web dilancarkan.",
+    share: "Kongsi kad", sharePending: "Tersedia selepas laman web dilancarkan",
+    shared: "Menu perkongsian telah dibuka.", copied: "Pautan telah disalin.", manual: "Pilih dan salin pautan di bawah.",
+    cardLink: "Pautan kad", qrAlt: "Kod QR untuk membuka kad nama ini", scan: "Imbas untuk membuka kad saya",
+    allDetails: "Semua maklumat hubungan di satu tempat", downloadQr: "Muat turun kod QR", afterLaunch: "Tersedia selepas pelancaran",
+    pendingUrl: "Pautan tetap laman web belum tersedia",
+  },
   tl: {
     skip: "Tumalon sa business card", card: "Digital na business card", profile: "PROPESYONAL NA PROFILE",
     placeholder: "Malapit nang ilagay ang larawan", location: "Bangkok, Thailand",
