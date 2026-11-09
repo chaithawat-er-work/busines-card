@@ -22,7 +22,7 @@ function CardContent({ url, qr }: { url: string | null; qr: string | null }) {
         <div className="profile-content">
           <div className="profile-heading">
           <div className="portrait-panel">
-            {profile.portrait.src ? <img className="portrait" src={assetPath(profile.portrait.src)} alt={profile.portrait.alt} lang="en" width={1200} height={675} fetchPriority="high" /> : <div className="portrait-placeholder" role="img" aria-label={t.placeholder}><span>CC</span><small>{t.placeholder}</small></div>}
+            {profile.portrait.src ? <img className="portrait" src={assetPath(profile.portrait.src)} alt={profile.portrait.alt} lang="en" width={profile.portrait.width} height={profile.portrait.height} fetchPriority="high" /> : <div className="portrait-placeholder" role="img" aria-label={t.placeholder}><span>CC</span><small>{t.placeholder}</small></div>}
           </div>
           <div className="identity">
           <div className="profile-kicker"><span /> {t.profile}</div>

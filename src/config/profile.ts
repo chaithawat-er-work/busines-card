@@ -15,7 +15,8 @@ export interface Profile {
   instagram: { label: string; url: string };
   line: { id: string; url: string | null };
   email: string;
-  portrait: { src: string | null; alt: string };
+  portrait: { src: string | null; alt: string; width: number; height: number };
+  socialImage: string;
   contactFilename: string;
 }
 
@@ -41,7 +42,8 @@ export const profile: Profile = {
   instagram: { label: "@bankblanc", url: "https://www.instagram.com/bankblanc/" },
   line: { id: "0866078928", url: "https://line.me/ti/p/w0A3X6PN1X" },
   email: "chaithawat.emer.work@gmail.com",
-  portrait: { src: "/portrait-v2.webp", alt: "Chaithawat Chueluecha in front of an ambulance and the Erawan EMS building" },
+  portrait: { src: "/portrait-suit.webp", alt: "Chaithawat Chueluecha wearing a navy suit and silver tie outdoors", width: 240, height: 372 },
+  socialImage: "og-image-suit.png",
   contactFilename: "Chaithawat-Chueluecha.vcf",
 };
 

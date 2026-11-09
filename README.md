@@ -4,7 +4,7 @@ A mobile-first Next.js App Router, TypeScript, Tailwind CSS digital business car
 
 ## Status
 
-Local implementation. **Not deployed.** Hosting provider, permanent public URL, and permission to publish are pending. QR generation and URL sharing are intentionally unavailable until a canonical URL is configured. No temporary QR is presented as a finished asset.
+**Published on GitHub Pages:** https://chaithawat-er-work.github.io/busines-card/ (owner approved on 9 November 2026). The canonical URL and QR destination stay the same when profile details or the portrait change. Source: https://github.com/chaithawat-er-work/busines-card.
 
 ## Structure
 
@@ -45,11 +45,11 @@ Production build uses webpack for predictable Windows compatibility. `out/` is a
 
 Edit `src/config/profile.ts`. It supplies the page, vCard, and metadata. The owner-confirmed role, Emergency Physician Of Erawan Center, has display text in all six supported languages in this file and is included in the vCard TITLE field. Telephone numbers use E.164 notation for `tel:` links. The Save Contact button downloads a vCard 3.0 with structured name, credentials, organization and department, mobile, office, and the website URL when configured. The download is followed by the phone's contact import flow.
 
-The latest owner-supplied image is stored as `public/portrait-v2.webp` at a maximum width of 1200px with metadata removed by the encoder. It displays in a compact square frame, up to 240px wide on desktop and 210px on mobile. CSS `object-fit: cover` with `object-position: 65% 50%` trims part of the ambulance on the left while keeping the doctor prominent. The original image asset is unchanged; only the visible framing changes. To replace it, optimize the replacement to WebP/JPEG, place it in `public/`, and update `portrait.src` and `portrait.alt`. Set `portrait.src` to `null` to use the neutral initials placeholder. No AI alteration is applied to the supplied image.
+The latest owner-supplied image is `public/portrait-suit.webp` (240×372, optimized without upscaling). It is shown in a compact 4:5 frame with `object-position: 50% 18%` to preserve the face and upper body. The suit photograph replaces the prior ambulance portrait. No AI alteration is applied. To replace it, add an optimized image in `public/` and update `portrait.src`, `portrait.alt`, `portrait.width`, and `portrait.height` in the profile configuration. Set `portrait.src` to `null` to use the initials placeholder.
 
 Contact actions use large Thai labels, colored local app icons, and touch targets of at least 48px. LINE copies the supplied `0866078928` ID and explains how to search for it; there is no guessed add-friend URL. Gmail opens the user's configured mail app through `mailto:chaithawat.emer.work@gmail.com`. Both email and LINE ID are included in the saved vCard (LINE in its note field). See [the Thai publishing walkthrough](DEPLOYMENT_TH.md) for GitHub and Cloudflare Pages instructions.
 
-If the profile identity changes, regenerate `public/og-image.png` with matching text and portrait. The current static social preview is 1200×630; the favicon is a personal CC monogram, not an organizational mark.
+If the profile identity changes, regenerate the asset named by `profile.socialImage` (currently `public/og-image-suit.png`) with matching text and portrait. The current static social preview is 1200×630; the favicon is a personal CC monogram, not an organizational mark.
 
 ## Canonical URL, QR, and sharing
 
@@ -65,9 +65,9 @@ Share uses the native Web Share API when supported. Cancellation is respected. U
 
 ## Proposed deployment: Cloudflare Pages static hosting
 
-### Prepared alternative: GitHub Pages (not published)
+### Active hosting: GitHub Pages
 
-The proposed production address is `https://chaithawat-er-work.github.io/busines-card/`. The owner has not yet approved public deployment at this exact address. The manual-only `.github/workflows/deploy-pages.yml` is prepared for review; it does not run on source pushes. Before running it, obtain owner approval, enable Pages with **GitHub Actions** as the source, and set the repository variable `NEXT_PUBLIC_SITE_URL` to the approved address. The workflow sets `NEXT_PUBLIC_BASE_PATH=/busines-card`, runs checks, builds `out/`, uploads the Pages artifact, and deploys it. Changing the destination requires reviewing the workflow and canonical URL together.
+The approved production address is `https://chaithawat-er-work.github.io/busines-card/` and the initial deployment succeeded on 9 November 2026. The manual-only `.github/workflows/deploy-pages.yml` is prepared for review; it does not run on source pushes. Before running it, obtain owner approval, enable Pages with **GitHub Actions** as the source, and set the repository variable `NEXT_PUBLIC_SITE_URL` to the approved address. The workflow sets `NEXT_PUBLIC_BASE_PATH=/busines-card`, runs checks, builds `out/`, uploads the Pages artifact, and deploys it. Changing the destination requires reviewing the workflow and canonical URL together.
 
 For a local subpath build, set `NEXT_PUBLIC_BASE_PATH=/busines-card` and leave `NEXT_PUBLIC_SITE_URL` empty until approval. This tests asset paths without generating a distributable QR. Portrait and icon paths are prefixed automatically. Keep both variables empty for the ordinary root-hosted local preview. `basePath` is embedded at build time and requires a rebuild when changed.
 

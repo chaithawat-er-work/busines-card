@@ -16,10 +16,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${fullName} | ${profile.organization}`, description,
     type: "profile", firstName: profile.givenName, lastName: profile.familyName,
-    ...(url ? { url, images: [{ url: `${url}og-image.png`, width: 1200, height: 630, alt: `${fullName} digital business card` }] } : {}),
+    ...(url ? { url, images: [{ url: `${url}${profile.socialImage}`, width: 1200, height: 630, alt: `${fullName} digital business card` }] } : {}),
     locale: "en_US",
   },
-  twitter: { card: "summary_large_image", title: fullName, description, ...(url ? { images: [`${url}og-image.png`] } : {}) },
+  twitter: { card: "summary_large_image", title: fullName, description, ...(url ? { images: [`${url}${profile.socialImage}`] } : {}) },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
