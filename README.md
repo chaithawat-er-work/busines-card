@@ -21,7 +21,7 @@ AGENTS.md                 Project conventions
 
 ## Local development
 
-The card supports English, Thai, Simplified Chinese, Japanese, Korean, and Indonesian through the always-visible **English / ไทย / 中文 / 日本語 / 한국어 / Bahasa Indonesia** selector. The mobile selector uses two rows of three large buttons to avoid horizontal scrolling. English is the initial default. The selected language is remembered in this browser's local storage when available; no language preference is sent to a server. UI labels, instructions, feedback, and location text switch together. The document language updates for screen readers. The owner's name, credentials, official English organization wording, contact destinations, and saved vCard stay consistent in every language. Edit translations in `src/config/translations.ts`.
+The card supports English, Thai, Simplified Chinese, Japanese, Korean, Indonesian, Tagalog, and German through the always-visible **English / ไทย / 中文 / 日本語 / 한국어 / Bahasa Indonesia / Tagalog / Deutsch** selector. The mobile selector uses three columns of large buttons to avoid horizontal scrolling. English is the initial default. The selected language is remembered in this browser's local storage when available; no language preference is sent to a server. UI labels, instructions, feedback, and location text switch together. The document language updates for screen readers. The owner's name, credentials, official English organization wording, contact destinations, and saved vCard stay consistent in every language. Edit translations in `src/config/translations.ts`.
 
 Use Node.js 22 or later and pnpm 11.25.0. On this computer the executable is `pnpm.cmd`; use that spelling if PowerShell does not resolve `pnpm`. npm is not on the current PATH.
 
@@ -43,7 +43,7 @@ Production build uses webpack for predictable Windows compatibility. `out/` is a
 
 ## Update details and portrait
 
-Edit `src/config/profile.ts`. It supplies the page, vCard, and metadata. The owner-confirmed role, Emergency Physician Of Erawan Center, has display text in all six supported languages in this file and is included in the vCard TITLE field. Telephone numbers use E.164 notation for `tel:` links. The Save Contact button downloads a vCard 3.0 with structured name, credentials, organization and department, mobile, office, and the website URL when configured. The download is followed by the phone's contact import flow.
+Edit `src/config/profile.ts`. It supplies the page, vCard, and metadata. The owner-confirmed role, Emergency Physician Of Erawan Center, has display text in all eight supported languages in this file and is included in the vCard TITLE field. Telephone numbers use E.164 notation for `tel:` links. The Save Contact button downloads a vCard 3.0 with structured name, credentials, organization and department, mobile, office, and the website URL when configured. The download is followed by the phone's contact import flow.
 
 The latest owner-supplied image is `public/portrait-suit.webp` (240×372, optimized without upscaling). It is shown in a compact 4:5 frame with `object-position: 50% 18%` to preserve the face and upper body. The suit photograph replaces the prior ambulance portrait. No AI alteration is applied. To replace it, add an optimized image in `public/` and update `portrait.src`, `portrait.alt`, `portrait.width`, and `portrait.height` in the profile configuration. Set `portrait.src` to `null` to use the initials placeholder.
 
@@ -53,7 +53,7 @@ If the profile identity changes, regenerate the asset named by `profile.socialIm
 
 ## Canonical URL, QR, and sharing
 
-For international sharing, send one permanent public website link by email, message, AirDrop, or QR. Recipients can open the card on iOS or Android without signing in to this website. WhatsApp, Instagram, and email use their direct destinations; their own app/account requirements still apply. Set `profile.line.url` to the owner's actual add-friend link copied from LINE → Home → Add friends → QR code → My QR code → Copy link. The card then shows a direct **Add on LINE** action in all six languages. Until this real link is supplied, the existing copy-ID fallback remains in place; a phone number alone is not treated as a confirmed add-friend URL.
+For international sharing, send one permanent public website link by email, message, AirDrop, or QR. Recipients can open the card on iOS or Android without signing in to this website. WhatsApp, Instagram, and email use their direct destinations; their own app/account requirements still apply. Set `profile.line.url` to the owner's actual add-friend link copied from LINE → Home → Add friends → QR code → My QR code → Copy link. The card then shows a direct **Add on LINE** action in all eight languages. Until this real link is supplied, the existing copy-ID fallback remains in place; a phone number alone is not treated as a confirmed add-friend URL.
 
 Set `NEXT_PUBLIC_SITE_URL` to the **owner-approved permanent HTTPS public profile URL** in `.env.local` and the hosting build environment. Rebuild whenever it changes: Next.js embeds this public value at build time. Do not put secrets in `NEXT_PUBLIC_*` variables.
 

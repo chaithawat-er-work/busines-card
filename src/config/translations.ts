@@ -1,4 +1,4 @@
-export type Language = "en" | "th" | "zh" | "ja" | "ko" | "id";
+export type Language = "en" | "th" | "zh" | "ja" | "ko" | "id" | "tl" | "de";
 export const languageOptions: { value: Language; label: string; htmlLang: string }[] = [
   { value: "en", label: "English", htmlLang: "en" },
   { value: "th", label: "ไทย", htmlLang: "th" },
@@ -6,6 +6,8 @@ export const languageOptions: { value: Language; label: string; htmlLang: string
   { value: "ja", label: "日本語", htmlLang: "ja" },
   { value: "ko", label: "한국어", htmlLang: "ko" },
   { value: "id", label: "Bahasa Indonesia", htmlLang: "id" },
+  { value: "tl", label: "Tagalog", htmlLang: "tl" },
+  { value: "de", label: "Deutsch", htmlLang: "de" },
 ];
 
 export function isLanguage(value: string | null): value is Language {
@@ -34,6 +36,40 @@ export type Translations = Record<TranslationKey, string>;
 
 export const translations: Record<Language, Translations> = {
   en: english,
+  tl: {
+    skip: "Tumalon sa business card", card: "Digital na business card", profile: "PROPESYONAL NA PROFILE",
+    placeholder: "Malapit nang ilagay ang larawan", location: "Bangkok, Thailand",
+    save: "I-save ang contact", saveHint: "I-save ang aking mga numero at email sa iyong contacts.",
+    saved: "Na-download na. Buksan ang file upang idagdag ako sa iyong contacts.",
+    contact: "Huwag mag-atubiling makipag-ugnayan", choose: "Pumili ng paraan ng pakikipag-ugnayan", mobile: "Tumawag sa mobile", office: "Tumawag sa opisina",
+    lineAdd: "Idagdag sa LINE", lineCopy: "LINE · Kopyahin ang ID", lineCopied: "Nakopya ang LINE ID. Buksan ang LINE at hanapin ang ID na ito upang idagdag ako.",
+    lineManual: "Piliin at kopyahin ang ID na ito, saka hanapin sa LINE.", lineId: "LINE ID na kokopyahin",
+    message: "Idagdag ako bilang contact sa WhatsApp.", email: "Mag-email · Gmail", stay: "Manatili tayong magkaugnay",
+    shareDescription: "Ibahagi ang card na ito sa gustong makipag-ugnayan.",
+    pendingDescription: "Maaari mo nang i-save ang contact ko. Magagamit ang pagbabahagi kapag inilunsad ang website.",
+    share: "Ibahagi ang card", sharePending: "Magagamit kapag inilunsad na ang website",
+    shared: "Nabuksan ang menu ng pagbabahagi.", copied: "Nakopya ang link.", manual: "Piliin at kopyahin ang link sa ibaba.",
+    cardLink: "Link ng card", qrAlt: "QR code para buksan ang business card", scan: "I-scan upang buksan ang card",
+    allDetails: "Lahat ng contact sa iisang lugar", downloadQr: "I-download ang QR", afterLaunch: "Magagamit pagkatapos ng paglunsad",
+    pendingUrl: "Hinihintay ang permanenteng link ng website",
+  },
+  de: {
+    skip: "Zur Visitenkarte springen", card: "Digitale Visitenkarte", profile: "PROFIL",
+    placeholder: "Profilfoto folgt", location: "Bangkok, Thailand",
+    save: "Kontakt speichern", saveHint: "Speichern Sie meine Telefonnummern und E-Mail-Adresse in Ihren Kontakten.",
+    saved: "Heruntergeladen. Öffnen Sie die Datei, um mich zu Ihren Kontakten hinzuzufügen.",
+    contact: "Kontaktieren Sie mich gerne", choose: "Kontaktmöglichkeit auswählen", mobile: "Mobil anrufen", office: "Büro anrufen",
+    lineAdd: "Auf LINE hinzufügen", lineCopy: "LINE · ID kopieren", lineCopied: "LINE-ID kopiert. Öffnen Sie LINE und suchen Sie nach dieser ID, um mich hinzuzufügen.",
+    lineManual: "Wählen und kopieren Sie diese ID und suchen Sie dann in LINE danach.", lineId: "LINE-ID zum Kopieren",
+    message: "Fügen Sie mich als Kontakt auf WhatsApp hinzu.", email: "E-Mail senden · Gmail", stay: "Bleiben wir in Kontakt",
+    shareDescription: "Teilen Sie diese Karte mit Personen, die Kontakt aufnehmen möchten.",
+    pendingDescription: "Sie können meinen Kontakt bereits speichern. Das Teilen ist nach der Veröffentlichung der Website verfügbar.",
+    share: "Karte teilen", sharePending: "Nach Veröffentlichung der Website verfügbar",
+    shared: "Teilen-Menü geöffnet.", copied: "Link kopiert.", manual: "Wählen und kopieren Sie den Link unten.",
+    cardLink: "Link zur Visitenkarte", qrAlt: "QR-Code zum Öffnen dieser Visitenkarte", scan: "Scannen, um meine Karte zu öffnen",
+    allDetails: "Alle Kontaktdaten an einem Ort", downloadQr: "QR-Code herunterladen", afterLaunch: "Nach Veröffentlichung verfügbar",
+    pendingUrl: "Die dauerhafte Website-Adresse steht noch aus",
+  },
   th: {
     skip: "ข้ามไปยังนามบัตร", card: "นามบัตรอิเล็กทรอนิกส์", profile: "ข้อมูลผู้ติดต่อ",
     placeholder: "กำลังเตรียมรูปโปรไฟล์", location: "กรุงเทพมหานคร ประเทศไทย",

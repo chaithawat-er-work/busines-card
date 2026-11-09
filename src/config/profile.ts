@@ -32,6 +32,8 @@ export const profile: Profile = {
     ja: "救急医",
     ko: "응급의학과 의사",
     id: "Dokter Emergensi",
+    tl: "Doktor sa Emerhensiya",
+    de: "Notfallmediziner",
   },
   organization: "ศูนย์รับแจ้งเหตุและสั่งการ ศูนย์บริการการแพทย์ฉุกเฉินกรุงเทพมหานคร (ศูนย์เอราวัณ)",
   affiliation: {
@@ -41,6 +43,8 @@ export const profile: Profile = {
     ja: { organization: "救急通報・指令センター、バンコク救急医療サービスセンター（エラワンセンター）", department: "医療サービス局", administration: "バンコク都庁" },
     ko: { organization: "응급 신고 및 출동 지령센터, 방콕 응급의료서비스센터 (에라완 센터)", department: "의료서비스국", administration: "방콕시청" },
     id: { organization: "Pusat Penerimaan Panggilan dan Pengiriman Respons Darurat, Pusat Layanan Medis Darurat Bangkok (Pusat Erawan)", department: "Departemen Layanan Medis", administration: "Pemerintah Metropolitan Bangkok" },
+    tl: { organization: "Sentro ng Pagtanggap ng Tawag at Pagpapadala ng Tulong, Bangkok Emergency Medical Service Center (Erawan Center)", department: "Kagawaran ng Serbisyong Medikal", administration: "Pamahalaang Metropolitan ng Bangkok" },
+    de: { organization: "Notruf- und Leitstelle, Bangkok Emergency Medical Service Center (Erawan Center)", department: "Abteilung für medizinische Dienste", administration: "Stadtverwaltung Bangkok" },
   },
   department: "Medical Service Department",
   administration: "Bangkok Metropolitan Administration",

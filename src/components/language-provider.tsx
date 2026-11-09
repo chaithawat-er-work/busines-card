@@ -27,7 +27,7 @@ export function useLanguage() { return useContext(LanguageContext); }
 
 export function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
-  return <nav className="language-selector" aria-label="Language / ภาษา / 语言 / 言語 / 언어 / Bahasa">
+  return <nav className="language-selector" aria-label="Language / ภาษา / 语言 / 言語 / 언어 / Bahasa / Wika / Sprache">
     {languageOptions.map(option => <button key={option.value} type="button" lang={option.htmlLang} aria-pressed={language === option.value} onClick={() => setLanguage(option.value)}>{option.label}</button>)}
   </nav>;
 }
